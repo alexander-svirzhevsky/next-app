@@ -23,8 +23,7 @@ const Button = ({
         "hover:bg-violet-800": variant === "primary",
         "bg-indigo-50": variant === "ghost",
         "text-neutral-900": variant === "ghost",
-        "hover:bg-violet-600": variant === "ghost",
-        "hover:text-stone-50": variant === "ghost",
+        "hover:bg-indigo-100": variant === "ghost",
       })}
       {...props}
     >
@@ -33,6 +32,7 @@ const Button = ({
         <span
           className={cn("inline-block ml-2.5", {
             "rotate-90": arrow === "bottom",
+            "[&>svg] fill-gray-50": variant === "primary",
           })}
         >
           <Arrow />
