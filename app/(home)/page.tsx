@@ -32,7 +32,7 @@ export default function Home() {
       <Badge type='gray'>Badge</Badge>
       <Badge type='red'>Badge</Badge>
       <Badge type='ghost'>Badge</Badge>
-      <Rating isEditable={true} rating={4} />
+      <Rating isEditable={false} rating={4} />
       <Rating isEditable={true} setRating={setRating} rating={rating} />
     </main>
   );

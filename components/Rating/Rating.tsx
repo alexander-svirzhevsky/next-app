@@ -8,7 +8,7 @@ interface RatingProps extends HTMLAttributes<HTMLDivElement> {
   setRating?: (val: number) => void;
 }
 
-const Rating = ({ rating, isEditable, setRating }: RatingProps) => {
+const Rating = ({ rating, isEditable, setRating, ...props }: RatingProps) => {
   const [stars, setStars] = useState<JSX.Element[]>(new Array(5).fill(<></>));
 
   const buildStars = (currRating: number) => {
@@ -19,6 +19,7 @@ const Rating = ({ rating, isEditable, setRating }: RatingProps) => {
           onClick={() => onStarClick(i + 1)}
           onMouseEnter={() => handleDisplay(i + 1)}
           onMouseLeave={() => handleDisplay(rating)}
+          {...props}
         >
           <StarIcon
             className={cn("cursor-pointer mr-1.5", {
@@ -42,8 +43,11 @@ const Rating = ({ rating, isEditable, setRating }: RatingProps) => {
   };
 
   const handleDisplay = (i: number) => {
-    if (!isEditable) return;
-    buildStars(i);
+    if (!isEditable) {
+      return;
+    } else {
+      buildStars(i);
+    }
   };
 
   const handleSpace = (e: KeyboardEvent<SVGAElement>, i: number) => {
